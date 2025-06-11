@@ -1,11 +1,10 @@
-/* Базовые стили */
 :root {
-    --primary: #3498db; /* Основной синий цвет */
-    --success: #2ecc71; /* Зеленый для правильных символов */
-    --danger: #e74c3c;  /* Красный для ошибок */
-    --dark: #2c3e50;    /* Темный цвет для текста */
-    --light: #ecf0f1;   /* Светлый фон */
-    --gray: #95a5a6;    /* Серый для второстепенного текста */
+    --primary: #3498db;
+    --success: #2ecc71;
+    --danger: #e74c3c;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --gray: #95a5a6;
 }
 
 * {
@@ -46,7 +45,6 @@ header, footer {
     background-color: rgba(249, 249, 249, 0);
 }
 
-/* Панель настроек слева */
 .settings-panel {
     width: 250px;
 }
@@ -146,7 +144,6 @@ header, footer {
     text-align: left;
 }
 
-/* Область с текстом */
 .text-sample {
     font-size: 1.4rem;
     margin: 25px 0;
@@ -218,11 +215,9 @@ header, footer {
     }
 
     .char.punctuation {
-        /* Запрещаем перенос знаков пунктуации */
         white-space: nowrap;
     }
 
-/* Текстовое поле */
 #typing-area {
     width: 100%;
     height: 150px;
@@ -242,7 +237,6 @@ header, footer {
         box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
     }
 
-/* Панель статистики */
 .stats-bar {
     display: flex;
     justify-content: space-around;
@@ -268,7 +262,6 @@ header, footer {
         font-size: 0.9rem;
     }
 
-/* Кнопки */
 .btn {
     display: block;
     width: 100%;
@@ -288,7 +281,6 @@ header, footer {
         background: #2980b9;
     }
 
-/* Страница результатов */
 .results-container {
     text-align: center;
     width: 900px;
@@ -383,17 +375,17 @@ header, footer {
 }
 
 #mistakes-text {
-    white-space: normal; /* Заменяем pre-wrap на normal */
+    white-space: normal;
     word-break: break-word;
     font-family: monospace;
-    line-height: 1.4; /* Уменьшаем межстрочный интервал */
+    line-height: 1.4;
     font-size: 1.2rem;
-    padding: 5px 10px; /* Минимальные отступы */
+    padding: 5px 10px;
     background: #f9f9f9;
     border-radius: 8px;
     text-align: left;
     display: block;
-    overflow: hidden; /* Убираем пустые строки */
+    overflow: hidden;
 }
 
     #mistakes-text .space {
@@ -430,7 +422,6 @@ header, footer {
     }
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .container {
         padding: 15px;
