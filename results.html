@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container results-container">
+    <h2>Результаты тестирования</h2>
+
+    <div class="summary">
+        <div class="result-card">
+            <h3>Скорость</h3>
+            <div class="value">{{ result.wpm }} слов/мин</div>
+            <div class="value">{{ result.cpm }} зн./мин</div>
+        </div>
+
+        <div class="result-card">
+            <h3>Точность</h3>
+            <div class="value">{{ result.accuracy }}%</div>
+        </div>
+
+        <div class="result-card">
+            <h3>Ошибки</h3>
+            <div class="value">{{ result.mistake_count }}</div>
+        </div>
+    </div>
+
+    {% if result.mistake_count > 0 %}
+    <div class="mistakes-section">
+        <h3>Детали ошибок:</h3>
+        <div id="mistakes-text">
+            <!-- Убрали класс text-sample -->
+            {{ result.highlighted_text | safe }}
+        </div>
+        <p class="hint">Наведите курсор на подсвеченные символы, чтобы увидеть подробности ошибки.</p>
+    </div>
+    {% endif %}
+
+    <div class="actions">
+        <a href="{{ url_for('index') }}" class="btn">Попробовать еще раз</a>
+    </div>
+</div>
+
+<style>
+    /* Убираем все лишние отступы */
+    #mistakes-text {
+        margin: 0;
+        padding: 5px 10px;
+        line-height: 1.8;
+        white-space: normal;
+        overflow: hidden;
+        background: #fff8f8;
+        overflow: visible;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+        /* Убираем отступы у символов */
+        #mistakes-text > span {
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+
+        #mistakes-text .word {
+            white-space: nowrap; /* Запрещаем разрыв внутри слова */
+            display: inline-block; /* Слова как отдельные блоки */
+        }
+
+        #mistakes-text .space {
+            display: inline;
+            padding: 0 4px;
+            letter-spacing: normal;
+            white-space: normal; /* Разрешаем разрыв после пробелов */
+        }
+
+        #mistakes-text .mistake {
+            background-color: #ffe0e0;
+        }
+</style>
+{% endblock %}

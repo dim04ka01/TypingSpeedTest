@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-container">
+    <!-- Панель настроек слева -->
+    <div class="settings-panel">
+        <div class="settings-card">
+            <h3>Настройки теста</h3>
+
+            <div class="setting-group">
+                <label>Тип текста:</label>
+                <div class="radio-group">
+                    <label {{ 'class="active"' if settings.text_type == 'text' }}>
+                        <input type="radio" name="text-type" value="text"
+                               {{ 'checked' if settings.text_type == 'text' }}>
+                        <span>Текст</span>
+                    </label>
+                    <label {{ 'class="active"' if settings.text_type == 'words' }}>
+                        <input type="radio" name="text-type" value="words"
+                               {{ 'checked' if settings.text_type == 'words' }}>
+                        <span>Отдельные слова</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>Язык:</label>
+                <div class="radio-group">
+                    <label {{ 'class="active"' if settings.language == 'russian' }}>
+                        <input type="radio" name="language" value="russian"
+                               {{ 'checked' if settings.language == 'russian' }}>
+                        <span>Русский</span>
+                    </label>
+                    <label {{ 'class="active"' if settings.language == 'english' }}>
+                        <input type="radio" name="language" value="english"
+                               {{ 'checked' if settings.language == 'english' }}>
+                        <span>Английский</span>
+                    </label>
+                    <label {{ 'class="active"' if settings.language == 'latin' }}>
+                        <input type="radio" name="language" value="latin"
+                               {{ 'checked' if settings.language == 'latin' }}>
+                        <span>Латинский</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>Сложность:</label>
+                <div class="radio-group">
+                    <label {{ 'class="active"' if settings.difficulty == 'easy' }}>
+                        <input type="radio" name="difficulty" value="easy"
+                               {{ 'checked' if settings.difficulty == 'easy' }}>
+                        <span>Легко</span>
+                    </label>
+                    <label {{ 'class="active"' if settings.difficulty == 'medium' }}>
+                        <input type="radio" name="difficulty" value="medium"
+                               {{ 'checked' if settings.difficulty == 'medium' }}>
+                        <span>Средне</span>
+                    </label>
+                    <label {{ 'class="active"' if settings.difficulty == 'hard' }}>
+                        <input type="radio" name="difficulty" value="hard"
+                               {{ 'checked' if settings.difficulty == 'hard' }}>
+                        <span>Тяжело</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="apply-settings" class="btn">Применить</button>
+        </div>
+    </div>
+
+    <!-- Основной контейнер (как было раньше) -->
+    <div class="container">
+        <div class="instructions">
+            <p>Начните печатать текст ниже. Тест начнется автоматически при первом нажатии клавиши.</p>
+        </div>
+
+        <div class="text-sample" id="text-sample">
+            {{ text_sample }}
+        </div>
+
+        <textarea id="typing-area"
+                  placeholder="Начните печатать здесь..."
+                  autocomplete="off"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="false"></textarea>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <span id="timer">00:00</span>
+                <small>Время</small>
+            </div>
+            <div class="stat">
+                <span id="wpm">0</span>
+                <small>Слов/мин</small>
+            </div>
+            <div class="stat">
+                <span id="accuracy">100%</span>
+                <small>Точность</small>
+            </div>
+        </div>
+
+        <button id="restart-btn" class="btn">Начать заново</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
