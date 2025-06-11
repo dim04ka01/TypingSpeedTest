@@ -26,7 +26,6 @@
     <div class="mistakes-section">
         <h3>Детали ошибок:</h3>
         <div id="mistakes-text">
-            <!-- Убрали класс text-sample -->
             {{ result.highlighted_text | safe }}
         </div>
         <p class="hint">Наведите курсор на подсвеченные символы, чтобы увидеть подробности ошибки.</p>
@@ -39,7 +38,6 @@
 </div>
 
 <style>
-    /* Убираем все лишние отступы */
     #mistakes-text {
         margin: 0;
         padding: 5px 10px;
@@ -52,7 +50,6 @@
         overflow-wrap: break-word;
     }
 
-        /* Убираем отступы у символов */
         #mistakes-text > span {
             margin: 0;
             padding: 0;
@@ -60,15 +57,15 @@
         }
 
         #mistakes-text .word {
-            white-space: nowrap; /* Запрещаем разрыв внутри слова */
-            display: inline-block; /* Слова как отдельные блоки */
+            white-space: nowrap;
+            display: inline-block;
         }
 
         #mistakes-text .space {
             display: inline;
             padding: 0 4px;
             letter-spacing: normal;
-            white-space: normal; /* Разрешаем разрыв после пробелов */
+            white-space: normal;
         }
 
         #mistakes-text .mistake {
