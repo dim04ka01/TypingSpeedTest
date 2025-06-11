@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let originalText = textSample.textContent.trim();
     let charSpans = [];
 
-    // Инициализация текста
+    // Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї ГІГҐГЄГ±ГІГ 
     function initText() {
         textSample.innerHTML = '';
         charSpans = [];
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     typingArea.focus();
     initRadioButtons();
 
-    // Обработчики событий
+    // ГЋГЎГ°Г ГЎГ®ГІГ·ГЁГЄГЁ Г±Г®ГЎГ»ГІГЁГ©
     typingArea.addEventListener('input', handleTyping);
     restartBtn.addEventListener('click', resetTest);
 
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 initText();
                 resetTestState();
 
-                // Принудительно переподключаем сокет
+                // ГЏГ°ГЁГ­ГіГ¤ГЁГІГҐГ«ГјГ­Г® ГЇГҐГ°ГҐГЇГ®Г¤ГЄГ«ГѕГ·Г ГҐГ¬ Г±Г®ГЄГҐГІ
                 socket.disconnect();
                 socket.connect();
             });
@@ -83,25 +83,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     function initRadioButtons() {
-        // Для всех групп радио-кнопок
+        // Г„Г«Гї ГўГ±ГҐГµ ГЈГ°ГіГЇГЇ Г°Г Г¤ГЁГ®-ГЄГ­Г®ГЇГ®ГЄ
         document.querySelectorAll('.radio-group').forEach(group => {
             const radios = group.querySelectorAll('input[type="radio"]');
 
             radios.forEach(radio => {
-                // Обработчик изменения состояния
+                // ГЋГЎГ°Г ГЎГ®ГІГ·ГЁГЄ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї Г±Г®Г±ГІГ®ГїГ­ГЁГї
                 radio.addEventListener('change', function () {
-                    // Сбрасываем стили у всех в группе
+                    // Г‘ГЎГ°Г Г±Г»ГўГ ГҐГ¬ Г±ГІГЁГ«ГЁ Гі ГўГ±ГҐГµ Гў ГЈГ°ГіГЇГЇГҐ
                     radios.forEach(r => {
                         r.closest('label').classList.remove('active');
                     });
 
-                    // Применяем стиль к выбранной
+                    // ГЏГ°ГЁГ¬ГҐГ­ГїГҐГ¬ Г±ГІГЁГ«Гј ГЄ ГўГ»ГЎГ°Г Г­Г­Г®Г©
                     if (this.checked) {
                         this.closest('label').classList.add('active');
                     }
                 });
 
-                // Инициализация активного состояния при загрузке
+                // Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї Г ГЄГІГЁГўГ­Г®ГЈГ® Г±Г®Г±ГІГ®ГїГ­ГЁГї ГЇГ°ГЁ Г§Г ГЈГ°ГіГ§ГЄГҐ
                 if (radio.checked) {
                     radio.closest('label').classList.add('active');
                 }
@@ -112,18 +112,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleTyping() {
         const typedText = typingArea.value;
 
-        // Запуск теста при первом вводе
+        // Г‡Г ГЇГіГ±ГЄ ГІГҐГ±ГІГ  ГЇГ°ГЁ ГЇГҐГ°ГўГ®Г¬ ГўГўГ®Г¤ГҐ
         if (!startTime) {
             startTest();
         }
 
-        // Обновление подсветки символов
+        // ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ ГЇГ®Г¤Г±ГўГҐГІГЄГЁ Г±ГЁГ¬ГўГ®Г«Г®Гў
         updateCharacterHighlighting(typedText);
 
-        // Обновление статистики
+        // ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ Г±ГІГ ГІГЁГ±ГІГЁГЄГЁ
         updateRealtimeStats(typedText);
 
-        // Проверка завершения теста
+        // ГЏГ°Г®ГўГҐГ°ГЄГ  Г§Г ГўГҐГ°ГёГҐГ­ГЁГї ГІГҐГ±ГІГ 
         if (typedText.length >= originalText.length) {
             finishTest();
         }
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Автоматическая прокрутка к первой ошибке
+        // ГЂГўГІГ®Г¬Г ГІГЁГ·ГҐГ±ГЄГ Гї ГЇГ°Г®ГЄГ°ГіГІГЄГ  ГЄ ГЇГҐГ°ГўГ®Г© Г®ГёГЁГЎГЄГҐ
         const firstMistake = document.querySelector('.char.mistake');
         if (firstMistake) {
             firstMistake.scrollIntoView({
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 inline: 'center'
             });
 
-            // Подсветка первой ошибки
+            // ГЏГ®Г¤Г±ГўГҐГІГЄГ  ГЇГҐГ°ГўГ®Г© Г®ГёГЁГЎГЄГЁ
             firstMistake.classList.add('highlight');
             setTimeout(() => {
                 firstMistake.classList.remove('highlight');
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateRealtimeStats(typedText) {
-        const elapsed = (new Date().getTime() - startTime) / 1000 / 60; // в минутах
+        const elapsed = (new Date().getTime() - startTime) / 1000 / 60; // Гў Г¬ГЁГ­ГіГІГ Гµ
         const typedWords = typedText.trim().split(/\s+/).length;
 
         if (elapsed > 0) {
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wpmDisplay.textContent = wpm;
         }
 
-        // Расчет точности
+        // ГђГ Г±Г·ГҐГІ ГІГ®Г·Г­Г®Г±ГІГЁ
         let correctChars = 0;
         for (let i = 0; i < Math.min(typedText.length, originalText.length); i++) {
             if (typedText[i] === originalText[i]) correctChars++;
@@ -206,10 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
             typed_text: typingArea.value
         });
 
-        // Обработка результатов и переход на страницу результатов
+        // ГЋГЎГ°Г ГЎГ®ГІГЄГ  Г°ГҐГ§ГіГ«ГјГІГ ГІГ®Гў ГЁ ГЇГҐГ°ГҐГµГ®Г¤ Г­Г  Г±ГІГ°Г Г­ГЁГ¶Гі Г°ГҐГ§ГіГ«ГјГІГ ГІГ®Гў
         socket.on('test_results', (data) => {
             if (data.test_id) {
-                // Переходим на страницу результатов с параметром test_id
+                // ГЏГҐГ°ГҐГµГ®Г¤ГЁГ¬ Г­Г  Г±ГІГ°Г Г­ГЁГ¶Гі Г°ГҐГ§ГіГ«ГјГІГ ГІГ®Гў Г± ГЇГ Г°Г Г¬ГҐГІГ°Г®Г¬ test_id
                 window.location.href = `/results?test_id=${data.test_id}`;
             } else {
                 console.error("Test ID not received");
